@@ -1,0 +1,6 @@
+.env
+*/.pytest_cache
+.pytest_cache
+*/*.sql3
+env/*
+

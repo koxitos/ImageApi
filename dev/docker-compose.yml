@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - db:/var/lib/postgresql/data
+    environment:
+      - DB_NAME=imageApi
+      - POSTGRES_USER=imageApi
+      - POSTGRES_PASSWORD=imageApi
+    networks:
+      - imageApi
+    ports:
+      - '5432:5432'
+
+  web:
+    image: python
+    command: runserver
+    platform: "linux/amd64"
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    volumes:
+      - ${IMAGE_API_REPO_DIR}:/application/web
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_NAME=imageApi
+      - DB_USER=imageApi
+      - DB_PASSWORD=imageApi
+    networks:
+      - imageApi
+    depends_on:
+      - db
+
+networks:
+  imageApi:
+    driver: bridge
