@@ -11,13 +11,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-import environ
+from decouple import config
 
-env = environ.Env(
-    DEBUG=(bool, False)
-)
 
-environ.Env.read_env
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -40,9 +36,9 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 DEFAULT_FILE_STORAGE = 'ImageApi.storage.MediaStorage'
-AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
 AWS_QUERYSTRING_AUTH = False
 
 # AWS_DEFAULT_ACL = 'public-read'
@@ -97,9 +93,9 @@ WSGI_APPLICATION = 'ImageApi.wsgi.application'
 DATABASES = {
      'default': {
          'ENGINE': 'django.db.backends.postgresql',
-         'NAME': env('DB_NAME'),
-         'USER': env('DB_USER'),
-         'PASSWORD': env('DB_PASSWORD'),
+         'NAME': config('DB_NAME'),
+         'USER': config('DB_USER'),
+         'PASSWORD': config('DB_PASSWORD'),
          'HOST': 'db',
          'PORT': 5432,
      }

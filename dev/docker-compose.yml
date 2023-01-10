@@ -4,7 +4,7 @@ services:
   db:
     image: postgres
     volumes:
-      - db:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
     environment:
       - DB_NAME=imageApi
       - POSTGRES_USER=imageApi
@@ -38,3 +38,6 @@ services:
 networks:
   imageApi:
     driver: bridge
+
+volumes:
+  pgdata:

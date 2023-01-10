@@ -2,11 +2,6 @@
 
 cd /application/web
 
-function _help() {
-  echo "
-  Usage:
-  "
-}
 function _runserver() {
   echo "Running server"
   exec python manage.py runserver 0.0.0.0:8000 "$@"
@@ -33,9 +28,6 @@ fi
 # Commands:
 
 case $CMD in
-  help)
-    _help
-  ;;
 
   runserver)
       _runserver "$@"
