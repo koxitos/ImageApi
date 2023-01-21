@@ -64,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'ImageApi.middleware.exceptions_middleware.ExceptionMiddleware'
 ]
 
 ROOT_URLCONF = 'ImageApi.urls'
