@@ -3,13 +3,14 @@ pipeline {
     environment {
         DISABLE_AUTH = 'true'
         DB_ENGINE    = 'sqlite'
+        GIT_URL = 'https://github.com/koxitos/ImageApi'
         DIR = "${sh 'echo $RANDOM | md5sum | head -c 20; echo;'}"
     }
     stages {
         stage('Test Stage 1: setup') {
             steps {
                 sh 'mkdir $DIR && cd $DIR'
-                sh 'git clone scm.userRemoteConfigs[0].url'
+                sh 'git clone ${GIT_URL}'
                 sh 'cd ImageApi'
                 
                 sh 'touch .env'
