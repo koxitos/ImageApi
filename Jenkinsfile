@@ -9,23 +9,24 @@ pipeline {
     stages {
         stage('Test Stage 1: setup') {
             steps {
-                //sh 'mkdir ${env.DIR} && cd ${env.DIR}'
-                sh 'git clone ${env.GIT_URL}'
-                sh 'cd ImageApi'
+                sh 'ls -la'
+                sh 'pwd'
+                // bash 'git clone ${env.GIT_URL}'
+                // bash 'cd ImageApi'
                 
-                sh 'touch .env'
-                sh 'echo DB_NAME="imageAp" > .env'
-                sh 'echo DB_USER="imageApi" > .env'
-                sh 'echo DB_PASSWORD="imageApi" > .env'
+                // bash 'touch .env'
+                // bash 'echo DB_NAME="imageAp" > .env'
+                // bash 'echo DB_USER="imageApi" > .env'
+                // bash 'echo DB_PASSWORD="imageApi" > .env'
 
-                sh 'echo AWS_STORAGE_BUCKET_NAME = "s3-md-bucket" > .env'
+                // bash 'echo AWS_STORAGE_BUCKET_NAME = "s3-md-bucket" > .env'
 
-                sh 'cd dev'
+                // bash 'cd dev'
 
-                sh 'docker-compose build'
-                sh 'docker-compose run web migrate'
+                // bash 'docker-compose build'
+                // bash 'docker-compose run web migrate'
 
-                sh 'docker-compose run web test'
+                // bash 'docker-compose run web test'
             }
         }
     }
