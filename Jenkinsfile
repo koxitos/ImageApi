@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Test Stage 1: setup') {
             steps {
-                sh 'mkdir $DIR && cd $DIR'
+                sh 'mkdir ${DIR} && cd ${DIR}'
                 sh 'git clone ${GIT_URL}'
                 sh 'cd ImageApi'
                 
