@@ -1,16 +1,16 @@
 pipeline {
     agent any 
     environment {
-        DISABLE_AUTH = 'true'
-        DB_ENGINE    = 'sqlite'
-        GIT_URL = 'https://github.com/koxitos/ImageApi'
+        DISABLE_AUTH = "true"
+        DB_ENGINE    = "sqlite"
+        GIT_URL = "https://github.com/koxitos/ImageApi"
         DIR = "${sh 'echo $RANDOM | md5sum | head -c 20; echo;'}"
     }
     stages {
         stage('Test Stage 1: setup') {
             steps {
-                sh 'ls -la'
-                sh 'pwd'
+                sh "ls -la"
+                sh "pwd"
                 // bash 'git clone ${env.GIT_URL}'
                 // bash 'cd ImageApi'
                 
