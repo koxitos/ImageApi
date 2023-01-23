@@ -3,7 +3,7 @@ pipeline {
     environment {
         DISABLE_AUTH = 'true'
         DB_ENGINE    = 'sqlite'
-        DIR = ${sh 'echo $RANDOM | md5sum | head -c 20; echo;'}
+        DIR = "${sh 'echo $RANDOM | md5sum | head -c 20; echo;'}"
     }
     stages {
         stage('Test Stage 1: setup') {
