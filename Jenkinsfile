@@ -18,12 +18,11 @@ pipeline {
                 sh "echo DB_PASSWORD='imageApi' > ImageApi/.env"
                 sh "echo AWS_STORAGE_BUCKET_NAME = 's3-md-bucket' > ImageApi/.env"
 
-                sh "cd dev"
-
-                sh "docker-compose build"
-                sh "docker-compose run web migrate"
-
-                sh "docker-compose run web test"
+                dir('dev'){
+                    sh "docker-compose build"
+                    sh "docker-compose run web migrate"
+                    sh "docker-compose run web test"
+                }
             }
         }
     }
