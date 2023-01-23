@@ -9,8 +9,8 @@ pipeline {
     stages {
         stage('Test Stage 1: setup') {
             steps {
-                sh 'mkdir ${DIR} && cd ${DIR}'
-                sh 'git clone ${GIT_URL}'
+                sh 'mkdir ${env.DIR} && cd ${env.DIR}'
+                sh 'git clone ${env.GIT_URL}'
                 sh 'cd ImageApi'
                 
                 sh 'touch .env'
